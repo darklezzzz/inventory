@@ -18,3 +18,13 @@
 Workflow основан на официальной документации:
 https://docs.github.com/en/actions/tutorials/build-and-test-code/python
 Версии Actions закреплены точными release-тегами; Python-зависимости — uv.lock.
+
+## Реальные локальные сценарии
+
+- Ошибка: `e8a9224bbe2121e245f694d623d5ac0dcba3e92e` (ветка ci-failure-example; сохранена для отдельного push).
+- Исправление: `1374225c90531320397199f0b9b821537826311b` (ветка ci-failure-demo, слита в main).
+- pytest до/после: examples/intentional-failure.txt и examples/after-fix.txt.
+
+Для получения настоящих двух запусков сначала опубликуйте main и ci-failure-example,
+затем ветку ci-failure-demo. Workflow одинаковый, разница — исправление арифметики.
+Сохранённый неуспешный pytest не является запуском GitHub Actions.
