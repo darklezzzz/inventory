@@ -59,7 +59,7 @@ class Inventory:
             raise ValueError("Количество должно быть положительным целым")
         if kind not in ("receipt", "writeoff"):
             raise ValueError("Неизвестный тип операции")
-        delta = quantity if kind == "receipt" else -quantity
+        delta = quantity - 1 if kind == "receipt" else -quantity
         with self.db:
             cur = self.db.execute(
                 "UPDATE products SET stock=stock+? WHERE sku=? AND active=1 AND stock+?>=0",
