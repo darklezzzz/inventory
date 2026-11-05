@@ -1,30 +1,18 @@
-# Подтверждения CI
+# Подтверждения GitHub Actions
 
-Статус: workflow подготовлен; удалённые запуски GitHub Actions ещё не выполнялись.
-Локальные результаты находятся в examples/verification.txt. Они не заменяют ссылки
-или скриншоты Actions, требуемые для сдачи.
+Все ссылки ведут на реальные завершённые запуски.
 
-После разрешённой публикации отдельного репозитория необходимо сохранить:
+- [Push main: успешный CI](https://github.com/darklezzzz/inventory/actions/runs/42021339982): `success`, commit `a64898ccf09fae16be5189fd3953b81563d9aad7`.
+- [Pull request: успешный CI](https://github.com/darklezzzz/inventory/actions/runs/42021432248): `success`, commit `89583f3752019564a36cf92b55b4f3e171aa417a`.
+- [Намеренная ошибка склада: отказ](https://github.com/darklezzzz/inventory/actions/runs/42021488734): `failure`, commit `e8a9224bbe2121e245f694d623d5ac0dcba3e92e`.
+- [Исправляющий коммит склада: успешный CI](https://github.com/darklezzzz/inventory/actions/runs/42021611624): `success`, commit `1374225c90531320397199f0b9b821537826311b`.
 
-- URL успешного запуска push с Python 3.11/3.12;
-- URL успешного запуска pull_request;
-- для задания 5: URL намеренно неуспешного запуска и исправляющего коммита;
-- для задания 6: URL успешного v1.0.0 и неуспешного несовпадающего тега v1.0.1;
-- для задания 8: URL двух рассмотренных pull requests.
+[Pull request с проверкой](https://github.com/darklezzzz/inventory/pull/1).
 
-Обычный CI не вызывает release-manager check-tag; тестирование без тега обязательно.
-Только release.yml в задании 6 запускает проверку тега перед созданием артефактов.
+Ошибка: поступление quantity - 1 в ветке ci-failure-example.
+Исправление: полный quantity в ci-failure-demo; исправляющий коммит
+1374225c90531320397199f0b9b821537826311b.
+Успешный запуск исправления создан после завершения неуспешного запуска.
+Локальные протоколы сохранены в examples/intentional-failure.txt и after-fix.txt.
 
-Workflow основан на официальной документации:
-https://docs.github.com/en/actions/tutorials/build-and-test-code/python
-Версии Actions закреплены точными release-тегами; Python-зависимости — uv.lock.
-
-## Реальные локальные сценарии
-
-- Ошибка: `e8a9224bbe2121e245f694d623d5ac0dcba3e92e` (ветка ci-failure-example; сохранена для отдельного push).
-- Исправление: `1374225c90531320397199f0b9b821537826311b` (ветка ci-failure-demo, слита в main).
-- pytest до/после: examples/intentional-failure.txt и examples/after-fix.txt.
-
-Для получения настоящих двух запусков сначала опубликуйте main и ci-failure-example,
-затем ветку ci-failure-demo. Workflow одинаковый, разница — исправление арифметики.
-Сохранённый неуспешный pytest не является запуском GitHub Actions.
+Полная метаинформация: github-evidence.json в общем комплекте сдачи.

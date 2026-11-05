@@ -16,7 +16,7 @@ SQLite products и operations; изменение остатка и запись
 Стек: Python 3.11/3.12, стандартная библиотека, pytest 8.3.5, ruff 0.11.13;
 сборщик hatchling 1.27.0. Зависимости фиксируются в pyproject.toml и uv.lock.
 Консольный интерфейс — src/inventory/cli.py, логика — src/inventory/core.py,
-тесты — tests/. Платформа задания 8 отдельно определяет схему в storage.py.
+тесты — tests/.
 
 ## Схема алгоритма
 
@@ -73,7 +73,7 @@ flowchart TD
 Основное свидетельство: [examples/stock.json](examples/stock.json).
 Локальные тесты: **15 passed in 0.02s**. Ruff и справка CLI: успешно.
 Полный протокол: [examples/verification.txt](examples/verification.txt).
-Общий набор: **94 тестов пройдены на Python 3.12.14 и Python 3.11.16**.
+Общий набор: **94 теста пройдены на Python 3.12.14 и Python 3.11.16**.
 Эти протоколы получены локально и не выдаются за GitHub Actions.
 
 ## Git и прослеживаемость
@@ -97,11 +97,12 @@ main
 в examples/intentional-failure.txt и after-fix.txt. Ветка ci-failure-example
 сохранена на ошибочном коммите. Main содержит исправление.
 
-## Недостающие внешние свидетельства
+## Подтверждения GitHub Actions
 
-Workflow YAML подготовлен. Репозиторий не опубликован, URL реальных запусков
-GitHub Actions пока нет. Для сдачи нужны ссылки или скриншоты, перечисленные
-в CI_EVIDENCE.md. Публикация требует отдельного разрешения пользователя.
+- [Push main: успешный CI](https://github.com/darklezzzz/inventory/actions/runs/42021339982) — success.
+- [Pull request: успешный CI](https://github.com/darklezzzz/inventory/actions/runs/42021432248) — success.
+- [Намеренная ошибка склада: отказ](https://github.com/darklezzzz/inventory/actions/runs/42021488734) — failure.
+- [Исправляющий коммит склада: успешный CI](https://github.com/darklezzzz/inventory/actions/runs/42021611624) — success.
 
 ## Ограничения и вывод
 
@@ -110,5 +111,6 @@ GitHub Actions пока нет. Для сдачи нужны ссылки или
 Приложение выполняет локальные функциональные требования и имеет автоматизированные
 проверки. Реализованные практики SCM и организационные правила описаны в SCMP.md.
 Использование отдельных принципов ISO/IEC/IEEE 828:2012 не доказывает полного
-соответствия стандарту. GitHub-подтверждения, где они требуются, остаются отдельным
-внешним этапом до окончательной сдачи.
+соответствия стандарту. GitHub-подтверждения, где они требуются, собраны в CI_EVIDENCE.md.
+
+Репозиторий: [darklezzzz/inventory](https://github.com/darklezzzz/inventory).
