@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "sku": "A1",
+      "name": "Болт",
+      "category": "Крепёж",
+      "stock": 7,
+      "active": 1
+    }
+  ],
+  "total_stock": 7,
+  "operations": [
+    {
+      "id": 1,
+      "sku": "A1",
+      "delta": 10,
+      "created_at": "2026-11-05T11:37:12.582910+00:00",
+      "note": "Поставка"
+    },
+    {
+      "id": 2,
+      "sku": "A1",
+      "delta": -3,
+      "created_at": "2026-11-05T11:37:12.583179+00:00",
+      "note": "Выдача"
+    }
+  ],
+  "rejected_writeoff": "Недостаточный остаток"
+}

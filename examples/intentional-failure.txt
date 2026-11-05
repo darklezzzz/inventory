@@ -1,0 +1,64 @@
+LOCAL pytest run; not GitHub Actions
+Commit: e8a9224bbe2121e245f694d623d5ac0dcba3e92e
+..FFF.......FF.                                                          [100%]
+=================================== FAILURES ===================================
+_________________________________ test_receipt _________________________________
+
+app = <inventory.core.Inventory object at 0x106cbb860>
+
+    def test_receipt(app):
+>       assert app.move("A1", 10, "receipt")["stock"] == 10
+E       assert 9 == 10
+
+inventory/tests/test_inventory.py:22: AssertionError
+________________________________ test_writeoff _________________________________
+
+app = <inventory.core.Inventory object at 0x106cbb710>
+
+    def test_writeoff(app):
+        app.move("A1", 10, "receipt")
+>       assert app.move("A1", 3, "writeoff")["stock"] == 7
+E       assert 6 == 7
+
+inventory/tests/test_inventory.py:27: AssertionError
+___________________________ test_insufficient_atomic ___________________________
+
+app = <inventory.core.Inventory object at 0x106d299d0>
+
+    def test_insufficient_atomic(app):
+        app.move("A1", 2, "receipt")
+        with pytest.raises(ValueError):
+            app.move("A1", 3, "writeoff")
+>       assert app.get("A1")["stock"] == 2
+E       assert 1 == 2
+
+inventory/tests/test_inventory.py:35: AssertionError
+___________________________ test_cannot_delete_stock ___________________________
+
+app = <inventory.core.Inventory object at 0x106d29ac0>
+
+    def test_cannot_delete_stock(app):
+        app.move("A1", 1, "receipt")
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+inventory/tests/test_inventory.py:60: Failed
+_________________________________ test_restart _________________________________
+
+app = <inventory.core.Inventory object at 0x106cbbc80>
+tmp_path = PosixPath('/private/var/folders/vf/8pnb6vbj4px256vfdf4gn9v40000gn/T/pytest-of-artyom/pytest-1/test_restart0')
+
+    def test_restart(app, tmp_path):
+        app.move("A1", 3, "receipt")
+        app.db.close()
+>       assert Inventory(tmp_path / "inventory.db").report()["total_stock"] == 3
+E       assert 2 == 3
+
+inventory/tests/test_inventory.py:67: AssertionError
+=========================== short test summary info ============================
+FAILED inventory/tests/test_inventory.py::test_receipt - assert 9 == 10
+FAILED inventory/tests/test_inventory.py::test_writeoff - assert 6 == 7
+FAILED inventory/tests/test_inventory.py::test_insufficient_atomic - assert 1...
+FAILED inventory/tests/test_inventory.py::test_cannot_delete_stock - Failed: ...
+FAILED inventory/tests/test_inventory.py::test_restart - assert 2 == 3
+5 failed, 10 passed in 0.04s
