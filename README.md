@@ -46,3 +46,9 @@ Git-доказательства: `git log --graph --oneline --all`, `git branch
 ## Ограничения
 
 Количество целое, поиск чувствителен к регистру; стоимость, партии и многопользовательские роли не предусмотрены.
+
+## GitHub
+
+[darklezzzz/inventory](https://github.com/darklezzzz/inventory).
+
+Подтверждения успешных и предусмотренных неуспешных сценариев: [CI_EVIDENCE.md](CI_EVIDENCE.md).
